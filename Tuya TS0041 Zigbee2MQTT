@@ -1,30 +1,30 @@
 blueprint:
-  name: Zigbee2MQTT - Tuya 2-Button Scene Switch
-  description: Automate your Tuya 2-Button Scene Switch via Zigbee2MQTT.
+  name: Zigbee2MQTT - Tuya 1-Button Scene Switch
+  description: Automate your Tuya 1-Button Scene Switch via Zigbee2MQTT.
   domain: automation
   input:
     switch:
-      name: Tuya 2-Button Scene Switch
-      description: Tuya 2-Button Scene Switch to use
+      name: Tuya 1-Button Scene Switch
+      description: Tuya 1-Button Scene Switch to use
       selector:
         entity:
           integration: mqtt
           domain: sensor
     button_one_short_press:
       name: Single Press - Button 1
-      description: Action to run on button 1 (lower-left) single press
+      description: Action to run on button single press
       default: []
       selector:
         action: {}
     button_one_double_press:
       name: Double Press - Button 1
-      description: Action to run on button 1 (lower-left) double press
+      description: Action to run on button double press
       default: []
       selector:
         action: {}
     button_one_long_press:
       name: Long Press - Button 1
-      description: Action to run on button 1 (lower-left) long press
+      description: Action to run on button long press
       default: []
       selector:
         action: {}
