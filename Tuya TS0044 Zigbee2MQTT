@@ -1,66 +1,84 @@
 blueprint:
-  name: Zigbee2MQTT - Tuya 3-Button Scene Switch
-  description: Automate your Tuya 3-Button Scene Switch via Zigbee2MQTT.
+  name: Zigbee2MQTT - Tuya 4-Button Scene Switch
+  description: Automate your Tuya 4-Button Scene Switch via Zigbee2MQTT.
   domain: automation
   input:
     switch:
-      name: Tuya 3-Button Scene Switch
-      description: Tuya 3-Button Scene Switch to use
+      name: Tuya 4-Button Scene Switch
+      description: Tuya 4-Button Scene Switch to use
       selector:
         entity:
           integration: mqtt
           domain: sensor
     button_one_short_press:
       name: Single Press - Button 1
-      description: Action to run on button 1 (lower-left) single press
+      description: Action to run on button 1 (upper-left) single press
       default: []
       selector:
         action: {}
     button_one_double_press:
       name: Double Press - Button 1
-      description: Action to run on button 1 (lower-left) double press
+      description: Action to run on button 1 (upper-left) double press
       default: []
       selector:
         action: {}
     button_one_long_press:
       name: Long Press - Button 1
-      description: Action to run on button 1 (lower-left) long press
+      description: Action to run on button 1 (upper-left) long press
       default: []
       selector:
         action: {}
     button_two_short_press:
       name: Single Press - Button 2
-      description: Action to run on button 2 (lower-middle) single press
+      description: Action to run on button 2 (upper-right) single press
       default: []
       selector:
         action: {}
     button_two_double_press:
       name: Double Press - Button 2
-      description: Action to run on button 2 (lower-middle) double press
+      description: Action to run on button 2 (upper-right) double press
       default: []
       selector:
         action: {}
     button_two_long_press:
       name: Long Press - Button 2
-      description: Action to run on button 2 (lower-middle) long press
+      description: Action to run on button 2 (upper-right) long press
       default: []
       selector:
         action: {}
     button_three_short_press:
       name: Single Press - Button 3
-      description: Action to run on button 3 (lower-right) single press
+      description: Action to run on button 3 (lower-left) single press
       default: []
       selector:
         action: {}
     button_three_double_press:
       name: Double Press - Button 3
-      description: Action to run on button 3 (lower-right) double press
+      description: Action to run on button 3 (lower-left) double press
       default: []
       selector:
         action: {}
     button_three_long_press:
       name: Long Press - Button 3
-      description: Action to run on button 3 (lower-right) long press
+      description: Action to run on button 3 (lower-left) long press
+      default: []
+      selector:
+        action: {}
+    button_four_short_press:
+      name: Single Press - Button 4
+      description: Action to run on button 4 (lower-right) single press
+      default: []
+      selector:
+        action: {}
+    button_four_double_press:
+      name: Double Press - Button 4
+      description: Action to run on button 4 (lower-right) double press
+      default: []
+      selector:
+        action: {}
+    button_four_long_press:
+      name: Long Press - Button 4
+      description: Action to run on button 4 (lower-right) long press
       default: []
       selector:
         action: {}
@@ -84,6 +102,9 @@ action:
     - '{{ command == ''3_single'' }}'
     sequence: !input 'button_three_short_press'
   - conditions:
+    - '{{ command == ''4_single'' }}'
+    sequence: !input 'button_four_short_press'
+  - conditions:
     - '{{ command == ''1_double'' }}'
     sequence: !input 'button_one_double_press'
   - conditions:
@@ -93,6 +114,9 @@ action:
     - '{{ command == ''3_double'' }}'
     sequence: !input 'button_three_double_press'
   - conditions:
+    - '{{ command == ''4_double'' }}'
+    sequence: !input 'button_four_double_press'
+  - conditions:
     - '{{ command == ''1_hold'' }}'
     sequence: !input 'button_one_long_press'
   - conditions:
@@ -101,3 +125,6 @@ action:
   - conditions:
     - '{{ command == ''3_hold'' }}'
     sequence: !input 'button_three_long_press'
+  - conditions:
+    - '{{ command == ''4_hold'' }}'
+    sequence: !input 'button_four_long_press'
